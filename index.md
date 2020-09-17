@@ -6,6 +6,11 @@ data:
     - icon: ':warning:'
       path: python/library/union_find.py
       title: python/library/union_find.py
+  - name: python
+    pages:
+    - icon: ':warning:'
+      path: python/union_find.py
+      title: python/union_find.py
   verificationCategories:
   - name: python
     pages:
