@@ -1,6 +1,6 @@
 # verify-helper: PROBLEM https://judge.yosupo.jp/problem/unionfind
 
-from union_find import UnionFind
+from python.library.union_find import UnionFind
 
 def main():
     N, Q = [int(x) for x in input().split()]
