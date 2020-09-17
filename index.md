@@ -3,14 +3,9 @@ data:
   libraryCategories:
   - name: python/library
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: python/library/union_find.py
       title: python/library/union_find.py
-  - name: python
-    pages:
-    - icon: ':warning:'
-      path: python/union_find.py
-      title: python/union_find.py
   verificationCategories:
   - name: python
     pages:

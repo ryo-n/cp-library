@@ -1,6 +1,9 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: python/library/union_find.py
+    title: python/library/union_find.py
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: py
@@ -14,16 +17,17 @@ data:
     \ basedir=basedir).decode()\n  File \"/opt/hostedtoolcache/Python/3.8.5/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/python.py\"\
     , line 84, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "# verify-helper: PROBLEM https://judge.yosupo.jp/problem/unionfind\n\nfrom\
-    \ union_find import UnionFind\n\ndef main():\n    N, Q = [int(x) for x in input().split()]\n\
-    \    uf = UnionFind(N)\n    for _ in range(Q):\n        t, u, v = [int(x) for\
-    \ x in input().split()]\n        if t == 0:\n            uf.union(u, v)\n    \
-    \    else:\n            print(int(uf.same(u, v)))\n\n    \nif __name__ == \"__main__\"\
-    :\n    main()\n"
-  dependsOn: []
+    \ python.library.union_find import UnionFind\n\ndef main():\n    N, Q = [int(x)\
+    \ for x in input().split()]\n    uf = UnionFind(N)\n    for _ in range(Q):\n \
+    \       t, u, v = [int(x) for x in input().split()]\n        if t == 0:\n    \
+    \        uf.union(u, v)\n        else:\n            print(int(uf.same(u, v)))\n\
+    \n    \nif __name__ == \"__main__\":\n    main()\n"
+  dependsOn:
+  - python/library/union_find.py
   isVerificationFile: true
   path: python/union_find_yosupo.test.py
   requiredBy: []
-  timestamp: '2020-09-17 16:42:12+09:00'
+  timestamp: '2020-09-17 16:46:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: python/union_find_yosupo.test.py
