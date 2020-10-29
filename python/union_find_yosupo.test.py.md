@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: python/library/union_find.py
     title: python/library/union_find.py
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: py
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
     links:
@@ -27,8 +27,8 @@ data:
   isVerificationFile: true
   path: python/union_find_yosupo.test.py
   requiredBy: []
-  timestamp: '2020-10-29 11:20:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-10-29 12:20:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: python/union_find_yosupo.test.py
 layout: document
