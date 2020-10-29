@@ -1,3 +1,5 @@
+import typing
+
 class DSU:
     '''
     Implement (union by size) + (path compression)
