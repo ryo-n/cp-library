@@ -1,47 +1,58 @@
-class UnionFind():
-    def __init__(self, n):
-        self.n = n
-        self.parents = [-1] * n
+class DSU:
+    '''
+    Implement (union by size) + (path compression)
+    Reference:
+    Zvi Galil and Giuseppe F. Italiano,
+    Data structures and algorithms for disjoint set union problems
+    '''
 
-    def find(self, x):
-        if self.parents[x] < 0:
-            return x
-        else:
-            self.parents[x] = self.find(self.parents[x])
-            return self.parents[x]
+    def __init__(self, n: int = 0):
+        self._n = n
+        self.parent_or_size = [-1] * n
 
-    def union(self, x, y):
-        x = self.find(x)
-        y = self.find(y)
+    def merge(self, a: int, b: int) -> int:
+        assert 0 <= a < self._n
+        assert 0 <= b < self._n
+
+        x = self.leader(a)
+        y = self.leader(b)
 
         if x == y:
-            return
+            return x
 
-        if self.parents[x] > self.parents[y]:
+        if -self.parent_or_size[x] < -self.parent_or_size[y]:
             x, y = y, x
 
-        self.parents[x] += self.parents[y]
-        self.parents[y] = x
+        self.parent_or_size[x] += self.parent_or_size[y]
+        self.parent_or_size[y] = x
 
-    def size(self, x):
-        return -self.parents[self.find(x)]
+        return x
 
-    def same(self, x, y):
-        return self.find(x) == self.find(y)
-    
-    def members(self, x):
-        root = self.find(x)
-        return [i for i in range(self.n) if self.find(i) == root]
+    def same(self, a: int, b: int) -> bool:
+        assert 0 <= a < self._n
+        assert 0 <= b < self._n
 
-    def roots(self):
-        return [i for i, x in enumerate(self.parents) if x < 0]
+        return self.leader(a) == self.leader(b)
 
-    def group_count(self):
-        return len(self.roots())
+    def leader(self, a: int) -> int:
+        assert 0 <= a < self._n
 
-    def all_group_members(self):
-        return {r: self.members(r) for r in self.roots()}
+        if self.parent_or_size[a] < 0:
+            return a
 
-    def __str__(self):
-        return '\n'.join('{}: {}'.format(r, self.members(r)) for r in self.roots())
+        self.parent_or_size[a] = self.leader(self.parent_or_size[a])
+        return self.parent_or_size[a]
 
+    def size(self, a: int) -> int:
+        assert 0 <= a < self._n
+
+        return -self.parent_or_size[self.leader(a)]
+
+    def groups(self) -> typing.List[typing.List[int]]:
+        leader_buf = [self.leader(i) for i in range(self._n)]
+
+        result: typing.List[typing.List[int]] = [[] for _ in range(self._n)]
+        for i in range(self._n):
+            result[leader_buf[i]].append(i)
+
+        return list(filter(lambda r: r, result))
